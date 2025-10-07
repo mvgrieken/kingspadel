@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PadelCanvas3D from './components/PadelCanvas3D';
+import SideViewCanvas from './components/SideViewCanvas';
 import './App.css';
 
 function App() {
@@ -7,62 +7,63 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="title">Kings Padel 3D</h1>
-      <p className="subtitle">Isometric Professional Padel Simulator</p>
+      <h1 className="title">Kings Padel Side View</h1>
+      <p className="subtitle">Classic Side-View Padel Experience</p>
 
       {!isPlaying ? (
         <div className="start-screen">
-          <div className="glass-card-3d">
-            <h2>Welcome to Realistic 3D Padel!</h2>
+          <div className="glass-card-side">
+            <h2>🎾 Welcome to Side-View Padel!</h2>
 
             <div className="features-section">
-              <h3>🎾 Official FIP Court & Rules</h3>
+              <h3>🏟️ Classic Tennis-Style View</h3>
               <ul className="features-list">
-                <li>Isometric 2.5D view with official 20m x 10m court</li>
-                <li>Realistic physics: ball can bounce off walls AFTER ground hit</li>
-                <li>Service system with ball toss and diagonal serving</li>
-                <li>Glass walls (3-4m high) and mesh fence sections</li>
-                <li>Tennis-style scoring with deuce and advantage</li>
+                <li>Side-view perspective (like Tennis for Two classic)</li>
+                <li>Clear visibility of all court elements and ball height</li>
+                <li>Official 20m x 10m FIP court with glass walls</li>
+                <li>Realistic 2D physics with proper gravity</li>
+                <li>Visual ball trail and impact effects</li>
               </ul>
             </div>
 
             <div className="rules-section">
-              <h3>⚖️ Padel Rally Rules</h3>
+              <h3>⚖️ Official Padel Rules</h3>
               <ul className="rules-list">
-                <li><strong>Ball can bounce ONCE on ground per side</strong></li>
+                <li><strong>Ball bounces ONCE maximum per side</strong></li>
                 <li><strong>Ball CANNOT hit wall before ground (FAULT!)</strong></li>
-                <li><strong>Ball CAN hit walls after bouncing on ground</strong></li>
-                <li>Ball over 4m height = OUT</li>
-                <li>Ball hitting net = Point to opponent</li>
+                <li><strong>Ball CAN hit walls AFTER ground bounce</strong></li>
+                <li>Service must land in diagonal service box</li>
+                <li>2 serves per point (fault = second serve)</li>
+                <li>Tennis-style scoring: 0, 15, 30, 40, Game</li>
               </ul>
             </div>
 
             <div className="controls-section">
-              <h3>🎮 4-Player Controls</h3>
-              <div className="player-controls-3d">
+              <h3>🎮 Simple 4-Player Controls</h3>
+              <div className="side-view-controls">
                 <div className="team team-a">
-                  <h4>Team A (Red) - Bottom Court</h4>
+                  <h4>Team A (Red) - Left Side</h4>
                   <div className="players">
                     <div className="player">
-                      <strong>Player A1 (Left):</strong>
+                      <strong>A1 (Front Player):</strong>
                       <p>Move: W/S | Hit: SPACE</p>
                     </div>
                     <div className="player">
-                      <strong>Player A2 (Right):</strong>
-                      <p>Move: Q/A | Hit: TAB</p>
+                      <strong>A2 (Back Player):</strong>
+                      <p>Move: A/D | Hit: Q</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="team team-b">
-                  <h4>Team B (Cyan) - Top Court</h4>
+                  <h4>Team B (Cyan) - Right Side</h4>
                   <div className="players">
                     <div className="player">
-                      <strong>Player B1 (Left):</strong>
+                      <strong>B1 (Front Player):</strong>
                       <p>Move: ↑/↓ | Hit: SHIFT</p>
                     </div>
                     <div className="player">
-                      <strong>Player B2 (Right):</strong>
+                      <strong>B2 (Back Player):</strong>
                       <p>Move: I/K | Hit: ENTER</p>
                     </div>
                   </div>
@@ -70,38 +71,53 @@ function App() {
               </div>
 
               <div className="game-controls">
-                <h4>Game Controls</h4>
-                <p><strong>SPACE:</strong> Toss ball & Serve</p>
-                <p><strong>ESC:</strong> Pause/Resume</p>
-                <p><strong>D:</strong> Debug mode (show physics)</p>
-                <p><strong>R:</strong> Restart match</p>
+                <h4>🕹️ Game Controls</h4>
+                <div className="control-grid">
+                  <p><strong>SPACE:</strong> Toss ball & Serve</p>
+                  <p><strong>ESC:</strong> Pause/Resume</p>
+                  <p><strong>D:</strong> Debug mode</p>
+                  <p><strong>H:</strong> Auto-assist (easier gameplay)</p>
+                  <p><strong>R:</strong> Restart match</p>
+                </div>
               </div>
             </div>
 
-            <div className="service-info">
-              <h3>🏓 Service System</h3>
-              <ul className="service-list">
-                <li>Press SPACE to toss ball up</li>
-                <li>Press SPACE again when ball is in air to serve</li>
-                <li>Serve diagonally to opposite service box</li>
-                <li>Ball must bounce in service box to be valid</li>
-                <li>2 serves per point (fault = second serve)</li>
+            <div className="gameplay-info">
+              <h3>🏓 How to Play</h3>
+              <ul className="gameplay-list">
+                <li><strong>Service:</strong> Press SPACE to toss, SPACE again to serve</li>
+                <li><strong>Rally:</strong> Hit ball with your racket (timing matters!)</li>
+                <li><strong>Strategy:</strong> Use walls after ground bounce for tactical shots</li>
+                <li><strong>Teamwork:</strong> Coordinate with your teammate</li>
+                <li><strong>Auto-assist:</strong> Enable with H key for easier ball tracking</li>
+              </ul>
+            </div>
+
+            <div className="visual-features">
+              <h3>✨ Visual Features</h3>
+              <ul className="visual-list">
+                <li>Ball shadows show height and distance from ground</li>
+                <li>Speed lines indicate fast-moving ball</li>
+                <li>Impact particles on hits and bounces</li>
+                <li>Glass walls with realistic transparency</li>
+                <li>Professional scoreboard with tennis scoring</li>
               </ul>
             </div>
 
             <button
-              className="play-button-3d"
+              className="play-button-side"
               onClick={() => setIsPlaying(true)}
             >
-              🚀 Start 3D Padel Match
+              🚀 Start Side-View Match
             </button>
           </div>
         </div>
       ) : (
         <>
-          <PadelCanvas3D isPlaying={isPlaying} />
-          <div className="game-info-3d">
-            <p>🎮 Use WASD/Arrows to move • SPACE to serve • ESC to pause • D for debug</p>
+          <SideViewCanvas isPlaying={isPlaying} />
+          <div className="game-info-side">
+            <p>🎮 Move with WASD/Arrows • Hit with SPACE/SHIFT/Q/ENTER • SPACE to serve • ESC to pause</p>
+            <p>💡 Press H for auto-assist • D for debug mode</p>
           </div>
           <button
             className="back-button"

@@ -6,25 +6,25 @@
   min-height: 100vh;
   padding: 20px;
   color: white;
-  background: linear-gradient(135deg, #0D47A1, #1565C0, #1976D2);
+  background: linear-gradient(180deg, #87CEEB 0%, #4682B4 50%, #2F4F4F 100%);
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 3.8rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
   text-align: center;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(90deg, #FFD700, #FFA000, #FFD700);
+  background: linear-gradient(90deg, #FFD700, #FF8C00, #FFD700);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: titleGlow 2s ease-in-out infinite alternate;
+  animation: titlePulse 3s ease-in-out infinite alternate;
 }
 
-@keyframes titleGlow {
-  0% { text-shadow: 0 4px 20px rgba(255, 215, 0, 0.5); }
-  100% { text-shadow: 0 4px 30px rgba(255, 215, 0, 0.8); }
+@keyframes titlePulse {
+  0% { transform: scale(1); text-shadow: 0 4px 20px rgba(255, 215, 0, 0.5); }
+  100% { transform: scale(1.02); text-shadow: 0 4px 30px rgba(255, 215, 0, 0.8); }
 }
 
 .subtitle {
@@ -33,79 +33,88 @@
   opacity: 0.9;
   text-align: center;
   font-style: italic;
-  color: #E3F2FD;
+  color: #E6F3FF;
 }
 
 .start-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: slideInUp 0.8s ease-out;
+  animation: slideIn 0.8s ease-out;
   max-height: 90vh;
   overflow-y: auto;
 }
 
-.glass-card-3d {
-  background: rgba(255, 255, 255, 0.1);
+.glass-card-side {
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(20px);
   border-radius: 25px;
-  padding: 30px 40px;
+  padding: 35px 45px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  max-width: 900px;
+  max-width: 1000px;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.glass-card-3d h2 {
-  font-size: 2.5rem;
+.glass-card-side h2 {
+  font-size: 2.4rem;
   margin-bottom: 2rem;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
   color: #FFD700;
 }
 
-.features-section, .rules-section, .controls-section, .service-info {
+.features-section, .rules-section, .controls-section, .gameplay-info, .visual-features {
   margin: 2rem 0;
   text-align: left;
 }
 
-.features-section h3, .rules-section h3, .controls-section h3, .service-info h3 {
-  font-size: 1.5rem;
+.features-section h3, .rules-section h3, .controls-section h3,
+.gameplay-info h3, .visual-features h3 {
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   text-align: center;
   color: #FFD700;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.features-list, .rules-list, .service-list {
+.features-list, .rules-list, .gameplay-list, .visual-list {
   list-style-type: none;
   padding: 0;
   margin-bottom: 1.5rem;
 }
 
-.features-list li, .rules-list li, .service-list li {
+.features-list li, .rules-list li, .gameplay-list li, .visual-list li {
   background: rgba(255, 255, 255, 0.08);
   padding: 12px 20px;
   margin: 8px 0;
   border-radius: 12px;
-  border-left: 4px solid #4CAF50;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.features-list li:hover, .rules-list li:hover, .service-list li:hover {
-  transform: translateX(5px);
-  background: rgba(255, 255, 255, 0.12);
+.features-list li {
+  border-left: 4px solid #4CAF50;
 }
 
 .rules-list li {
-  border-left-color: #FF5722;
+  border-left: 4px solid #FF5722;
 }
 
-.service-list li {
-  border-left-color: #2196F3;
+.gameplay-list li {
+  border-left: 4px solid #2196F3;
 }
 
-.player-controls-3d {
+.visual-list li {
+  border-left: 4px solid #9C27B0;
+}
+
+.features-list li:hover, .rules-list li:hover,
+.gameplay-list li:hover, .visual-list li:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.side-view-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -114,21 +123,27 @@
 
 .team {
   background: rgba(255, 255, 255, 0.08);
-  padding: 20px;
+  padding: 25px;
   border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.team:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .team-a {
-  border-color: rgba(255, 107, 107, 0.5);
+  border-color: rgba(255, 107, 107, 0.6);
 }
 
 .team-b {
-  border-color: rgba(78, 205, 196, 0.5);
+  border-color: rgba(78, 205, 196, 0.6);
 }
 
 .team h4 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   font-size: 1.3rem;
   text-align: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -149,10 +164,15 @@
 }
 
 .player {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   padding: 15px;
   border-radius: 10px;
   border-left: 3px solid;
+  transition: background 0.2s ease;
+}
+
+.player:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .team-a .player {
@@ -177,7 +197,7 @@
 
 .game-controls {
   background: rgba(255, 255, 255, 0.08);
-  padding: 20px;
+  padding: 25px;
   border-radius: 15px;
   margin-top: 2rem;
   grid-column: 1 / -1;
@@ -187,18 +207,27 @@
   text-align: center;
   color: #FFC107;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
-.game-controls p {
-  margin: 8px 0;
-  font-size: 1rem;
-  opacity: 0.9;
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
   text-align: center;
 }
 
-.play-button-3d {
-  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+.control-grid p {
+  margin: 8px 0;
+  font-size: 1rem;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.play-button-side {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #FFD700);
   color: white;
   border: none;
   padding: 20px 50px;
@@ -211,48 +240,65 @@
   margin-top: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
 }
 
-.play-button-3d:hover {
+.play-button-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.play-button-side:hover::before {
+  left: 100%;
+}
+
+.play-button-side:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, #FF8A80, #80CBC4);
 }
 
-.play-button-3d:active {
+.play-button-side:active {
   transform: translateY(-2px) scale(1.02);
 }
 
-.game-container-3d {
+.side-view-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeInZoom 0.8s ease-out;
+  animation: fadeInScale 0.8s ease-out;
   margin-bottom: 20px;
 }
 
-.padel-canvas-3d {
+.side-view-canvas {
   display: block;
   cursor: crosshair;
   transition: transform 0.3s ease;
 }
 
-.padel-canvas-3d:hover {
-  transform: scale(1.01);
+.side-view-canvas:hover {
+  transform: scale(1.005);
 }
 
-.game-info-3d {
+.game-info-side {
   margin: 15px 0;
   text-align: center;
 }
 
-.game-info-3d p {
-  font-size: 14px;
+.game-info-side p {
+  font-size: 13px;
   opacity: 0.9;
   background: rgba(255, 255, 255, 0.15);
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 8px 16px;
+  border-radius: 20px;
   display: inline-block;
+  margin: 4px 8px;
   backdrop-filter: blur(10px);
 }
 
@@ -267,6 +313,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
+  margin-top: 10px;
 }
 
 .back-button:hover {
@@ -275,7 +322,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes slideInUp {
+@keyframes slideIn {
   from {
     opacity: 0;
     transform: translateY(50px);
@@ -286,10 +333,10 @@
   }
 }
 
-@keyframes fadeInZoom {
+@keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -298,43 +345,57 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .player-controls-3d {
+@media (max-width: 1024px) {
+  .side-view-controls {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
-  .glass-card-3d {
-    padding: 20px;
+  .control-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .glass-card-side {
+    padding: 25px;
     max-width: 95vw;
     max-height: 85vh;
   }
 
-  .padel-canvas-3d {
+  .side-view-canvas {
     max-width: 95vw;
     height: auto;
   }
 
+  .control-grid {
+    grid-template-columns: 1fr;
+  }
+
   .players {
-    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .subtitle {
     font-size: 1rem;
   }
 
-  .play-button-3d {
+  .play-button-side {
     padding: 15px 30px;
     font-size: 1.1rem;
+  }
+
+  .glass-card-side h2 {
+    font-size: 1.8rem;
   }
 }
