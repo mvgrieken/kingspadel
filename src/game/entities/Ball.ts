@@ -1,8 +1,8 @@
 export class Ball {
   public x: number;
   public y: number;
-  public vx: number;
-  public vy: number;
+  public vx: number = 0;
+  public vy: number = 0;
   public radius: number = 8;
   public speed: number = 5;
   private initialSpeed: number = 5;
@@ -21,7 +21,7 @@ export class Ball {
     this.speed = this.initialSpeed;
   }
 
-  update(canvasWidth: number, canvasHeight: number): void {
+  update(_canvasWidth: number, canvasHeight: number): void {
     this.x += this.vx;
     this.y += this.vy;
 

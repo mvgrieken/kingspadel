@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import GameCanvas from './components/GameCanvas';
 import './App.css';
 
