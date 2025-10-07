@@ -6,206 +6,294 @@
   min-height: 100vh;
   padding: 20px;
   color: white;
+  background: linear-gradient(135deg, #0D47A1, #1565C0, #1976D2);
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
   text-align: center;
-  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(90deg, #fff, #ffd700, #fff);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(90deg, #FFD700, #FFA000, #FFD700);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 4px 20px rgba(255, 215, 0, 0.5); }
+  100% { text-shadow: 0 4px 30px rgba(255, 215, 0, 0.8); }
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
-  opacity: 0.8;
+  opacity: 0.9;
   text-align: center;
   font-style: italic;
+  color: #E3F2FD;
 }
 
 .start-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeIn 0.6s ease-in-out;
+  animation: slideInUp 0.8s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
+.glass-card-3d {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
   border-radius: 25px;
-  padding: 40px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  max-width: 700px;
+  padding: 30px 40px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 900px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.glass-card h2 {
-  font-size: 2.2rem;
+.glass-card-3d h2 {
+  font-size: 2.5rem;
   margin-bottom: 2rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  color: #ffd700;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+  color: #FFD700;
 }
 
-.rules-section, .controls-section {
+.features-section, .rules-section, .controls-section, .service-info {
   margin: 2rem 0;
   text-align: left;
 }
 
-.rules-section h3, .controls-section h3 {
-  font-size: 1.4rem;
+.features-section h3, .rules-section h3, .controls-section h3, .service-info h3 {
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #4ecdc4;
   text-align: center;
+  color: #FFD700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.rules-list {
+.features-list, .rules-list, .service-list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.features-list li, .rules-list li, .service-list li {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 12px;
+  border-left: 4px solid #4CAF50;
+  transition: transform 0.2s ease;
+}
+
+.features-list li:hover, .rules-list li:hover, .service-list li:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .rules-list li {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 12px 20px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border-left: 4px solid #ffd700;
+  border-left-color: #FF5722;
 }
 
-.player-controls {
-  display: flex;
-  justify-content: space-around;
-  margin: 1.5rem 0;
+.service-list li {
+  border-left-color: #2196F3;
+}
+
+.player-controls-3d {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  margin: 2rem 0;
 }
 
 .team {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   padding: 20px;
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  flex: 1;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-a {
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.team-b {
+  border-color: rgba(78, 205, 196, 0.5);
 }
 
 .team h4 {
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.team:first-child h4 {
-  color: #ff6b6b;
+.team-a h4 {
+  color: #FF6B6B;
 }
 
-.team:last-child h4 {
-  color: #4ecdc4;
+.team-b h4 {
+  color: #4ECDC4;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.player {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 3px solid;
+}
+
+.team-a .player {
+  border-left-color: #FF6B6B;
+}
+
+.team-b .player {
+  border-left-color: #4ECDC4;
+}
+
+.player strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
 }
 
 .player p {
-  margin: 0.5rem 0;
+  margin: 0;
   font-size: 0.95rem;
   opacity: 0.9;
 }
 
 .game-controls {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   padding: 20px;
   border-radius: 15px;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  grid-column: 1 / -1;
+}
+
+.game-controls h4 {
+  text-align: center;
+  color: #FFC107;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
 .game-controls p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  margin: 8px 0;
+  font-size: 1rem;
   opacity: 0.9;
+  text-align: center;
 }
 
-.play-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.play-button-3d {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
   color: white;
   border: none;
-  padding: 18px 45px;
-  font-size: 1.3rem;
+  padding: 20px 50px;
+  font-size: 1.4rem;
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   margin-top: 2rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
-.play-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, #7c88f5 0%, #8f5cb8 100%);
+.play-button-3d:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #FF8A80, #80CBC4);
 }
 
-.play-button:active {
-  transform: translateY(-1px);
+.play-button-3d:active {
+  transform: translateY(-2px) scale(1.02);
 }
 
-.game-container {
+.game-container-3d {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.6s ease-in-out;
+  animation: fadeInZoom 0.8s ease-out;
   margin-bottom: 20px;
 }
 
-.padel-canvas {
+.padel-canvas-3d {
   display: block;
   cursor: crosshair;
+  transition: transform 0.3s ease;
 }
 
-.game-info {
+.padel-canvas-3d:hover {
+  transform: scale(1.01);
+}
+
+.game-info-3d {
   margin: 15px 0;
   text-align: center;
 }
 
-.game-info p {
+.game-info-3d p {
   font-size: 14px;
-  opacity: 0.8;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
-  border-radius: 20px;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 20px;
+  border-radius: 25px;
   display: inline-block;
+  backdrop-filter: blur(10px);
 }
 
 .back-button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 12px 35px;
-  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px 40px;
+  font-size: 1.1rem;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .back-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes fadeIn {
+@keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -215,18 +303,38 @@
     font-size: 2.5rem;
   }
 
-  .player-controls {
-    flex-direction: column;
+  .player-controls-3d {
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
-  .glass-card {
-    padding: 25px;
-    max-width: 90vw;
+  .glass-card-3d {
+    padding: 20px;
+    max-width: 95vw;
+    max-height: 85vh;
   }
 
-  .padel-canvas {
-    max-width: 90vw;
+  .padel-canvas-3d {
+    max-width: 95vw;
     height: auto;
+  }
+
+  .players {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .play-button-3d {
+    padding: 15px 30px;
+    font-size: 1.1rem;
   }
 }
